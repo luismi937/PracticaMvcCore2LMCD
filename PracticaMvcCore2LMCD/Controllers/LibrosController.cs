@@ -21,7 +21,7 @@ namespace PracticaMvcCore2LMCD.Controllers
         }
         public async Task<IActionResult> Libros(int? idGenero)
         {
-            List<Libros> libros;
+            List<Libro> libros;
             if (idGenero != null)
             {
                 libros = await this.repo.GetLibrosGeneroAsync(idGenero.Value);
@@ -36,7 +36,7 @@ namespace PracticaMvcCore2LMCD.Controllers
 
         public async Task<IActionResult> Details(int idLibro)
         {
-            Libros libro = await this.repo.FindLibroAsync(idLibro);
+            Libro libro = await this.repo.FindLibroAsync(idLibro);
             return View(libro);
         }
         public IActionResult AddLibro(int? idLibro)
@@ -58,9 +58,10 @@ namespace PracticaMvcCore2LMCD.Controllers
             List<int> carrito = HttpContext.Session.GetObject<List<int>>("CARRITO");
             if (carrito != null)
             {
-                List<Libros> libros = await this.repo.GetLibrosCarritoAsync(carrito);
-                return View();
+                List<Libro> libros = await this.repo.GetLibrosCarritoAsync(carrito);
+                return View(libros);
             }
+            return View(new List<Libro>());
         }
         public async Task<IActionResult> RemoveLibro(int idLibro)
         {
@@ -74,7 +75,7 @@ namespace PracticaMvcCore2LMCD.Controllers
         public async Task<IActionResult> PedidosUsuario()
         {
             int idUser = int.Parse(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            List<VistaPedidos> vista = await this.repo.GetPedidosUserAsync(idUser);
+            List<VistaPedido> vista = await this.repo.GetPedidosUserAsync(idUser);
             return View(vista);
         }
         public IActionResult Index()

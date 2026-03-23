@@ -11,22 +11,22 @@ namespace PracticaMvcCore2LMCD.Repositories
         {
             this.context = context;
         }
-        public async Task<List<Libros>> GetLibrosAsync()
+        public async Task<List<Libro>> GetLibrosAsync()
         {
             var consulta = from datos in this.context.Libros select datos;
             return await consulta.ToListAsync();
         }
-        public async Task<List<Generos>> GetGenerosAsync()
+        public async Task<List<Genero>> GetGenerosAsync()
         {
             return await this.context.Generos.ToListAsync();
         }
-        public async Task<List<Libros>> GetLibrosGeneroAsync(int idGenero)
+        public async Task<List<Libro>> GetLibrosGeneroAsync(int idGenero)
         {
-            return await this.context.Libros.Where(z => z.idGenero == idGenero).ToListAsync();
+            return await this.context.Libros.Where(z => z.IdGenero == idGenero).ToListAsync();
         }
-        public async Task<Libros> FindLibroAsync(int idLibro)
+        public async Task<Libro> FindLibroAsync(int idLibro)
         {
-            return await this.context.Libros.FirstOrDefault(z => z.idLibro == idLibro);
+            return await this.context.Libros.FirstOrDefaultAsync(z => z.IdLibro == idLibro);
         }
         public async Task<int> GetMaxIdCompraAsync()
         {
@@ -50,7 +50,7 @@ namespace PracticaMvcCore2LMCD.Repositories
                 return await this.context.Pedidos.MaxAsync(p => p.IdFactura) + 1;
             }
         }
-        public async Task<List<Libros>> GetLibrosCarritoAsync(List<int> carrito)
+        public async Task<List<Libro>> GetLibrosCarritoAsync(List<int> carrito)
         {
             return await this.context.Libros.Where(l => carrito.Contains(l.IdLibro)).ToListAsync();
         }
@@ -78,17 +78,17 @@ namespace PracticaMvcCore2LMCD.Repositories
 
 
         }
-        public async Task<List<VistaPedidos>> GetPedidosUserAsync(int idUsuario)
+        public async Task<List<VistaPedido>> GetPedidosUserAsync(int idUsuario)
         {
             return await this.context.VistaPedidos.Where(p => p.IdUsuario == idUsuario).ToListAsync();
         }
-        public async Task<Usuarios> FindUsuarioAsync(int idusuaio)
+        public async Task<Usuario> FindUsuarioAsync(int idusuaio)
         {
-            return await this.context.Usuarios.FirstOrDefault(u => u.IdUsuario == idusuaio);
+            return await this.context.Usuarios.FirstOrDefaultAsync(u => u.IdUsuario == idusuaio);
         }
-        public async Task<Usuarios> LoginUserAsync(string email, string password)
+        public async Task<Usuario> LoginUserAsync(string email, string password)
         {
-            return await this.context.Usuarios.FirstOrDefault(u => u.Email == email && u.Password == password);
+            return await this.context.Usuarios.FirstOrDefaultAsync(u => u.Email == email && u.Pass == password);
         }
     }
 }

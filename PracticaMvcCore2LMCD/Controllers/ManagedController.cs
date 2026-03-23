@@ -21,7 +21,7 @@ namespace PracticaMvcCore2LMCD.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            Usuarios user = await this.repo.LoginUserAsync(email, password);
+            Usuario user = await this.repo.LoginUserAsync(email, password);
             if (user != null)
             {
                 var claims = new List<Claim>

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PracticaMvcCore2LMCD.Models
 {
     [Table("LIBROS")]
-    public class Libros
+    public class Libro
     {
         [Key]
         [Column("IdLibro")]

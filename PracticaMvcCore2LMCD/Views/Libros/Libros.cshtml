@@ -1,4 +1,4 @@
-﻿@model List<Libros>
+﻿@model List<Libro>
 
     <h1>Libros</h1>
 
@@ -21,10 +21,9 @@
         </tr>
         <th>Precio</th>
         <th>Id Genero</th>
-        <th>Detalles</th>
         </thead>
         <tbody>
-          @foreach(Libros l in Model)
+          @foreach(Libro l in Model)
             {
             <a asp-controller="Libros" asp-action="Details" asp-route-idlibro="@l.IdLibro">
                 <tr>
@@ -35,7 +34,6 @@
                 <td><img src="~/images/@l.Portada" width="100px" /></td>
                 <td>@l.Precio</td>
                 <td>@l.IdGenero</td>
-                <td>@Detalles</td>
                 <td><a asp-controller="Libros" asp-action="Details" asp-route-idlibro="@l.IdLibro">Ver detalles</a>
                     </td>
             </tr>

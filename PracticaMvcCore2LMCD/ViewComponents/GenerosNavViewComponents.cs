@@ -5,16 +5,16 @@ using PracticaMvcCore2LMCD.Repositories;
 
 namespace PracticaMvcCore2LMCD.ViewComponents
 {
-    public class GenerosNavViewComponents : ViewComponent
+    public class GenerosNavViewComponent : ViewComponent
     {
         private RepositoryLibros repo;
-        public GenerosNavViewComponents(RepositoryLibros repo)
+        public GenerosNavViewComponent(RepositoryLibros repo)
         {
             this.repo = repo;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            List<Generos> generos = await this.repo.GetGenerosAsync();
+            List<Genero> generos = await this.repo.GetGenerosAsync();
             return View(generos);
         }
     }

@@ -1,4 +1,4 @@
-﻿@model List<VistaPedidos>
+﻿@model List<VistaPedido>
 
     <h1>Pedidos del usuario</h1>
 
@@ -14,7 +14,7 @@
 </tr>
         </thead>
         <tbody>
-        @foreach(VistaPedidos pedidos in Model)
+        @foreach(VistaPedido pedidos in Model)
         {
             <td>@pedidos.Nombre @pedidos.Apellidos</td>
             <td><img style="height: 100px; width:80px"src="~/images/@pedidos.Portada"/></td>

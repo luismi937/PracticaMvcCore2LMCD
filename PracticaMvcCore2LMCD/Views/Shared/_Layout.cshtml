@@ -32,7 +32,7 @@
                         <li>
                             <a asp-action="Carrito" asp-controller="Libros">Carrito</a>
                         </li>
-                        @await Component.InvokeAsync(GenerosNav)
+                        @await Component.InvokeAsync("GenerosNav")
                         <partial name="_MenuUsuarios"/>
                     </ul>
                 </div>
