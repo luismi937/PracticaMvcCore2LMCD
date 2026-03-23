@@ -1,0 +1,15 @@
+﻿@model Libros
+
+<div>
+    <div>
+        <img class="w-100" src="~/images/@Model.Portada"/>
+    </div>
+    <div class="col-8">
+        <h1>@Model.Titulo</h1>
+        <h2>@Model.Autor</h2>
+        <h3>Editorial: @Model.Editorial</h3>
+        <h3>Precio: @Model.Precio</h3>
+
+    </div>
+</div>
+<a asp-action="AddLibro" asp-controller="Libros" asp-route-idlibro="@Model.IdLibro">Comprar</a>

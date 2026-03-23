@@ -1,0 +1,31 @@
+﻿@using System.Security.Claims
+
+@{
+    List<int> carrito = Context.Session.GetObject<List<int>>("CARRITO") ?? new List<int>();
+    int cantidadProductos = carrito.Count();
+}
+
+@if (!Context.User.Identity.IsAuthenticated)
+{
+    <li> 
+        <a asp-controller="Libros" asp-action="Index" class="nav-link">Login</a>
+    </li>
+}
+else
+{
+    <li>
+        <p>Libros: @cantidadProductos</p>
+    </li>
+    <li>
+        <a asp-action="Index" class="nav-link">
+            <img src="~/images/@Context.User.FindFirst("Foto")".Value />
+            Hola @Context.User.FindFirst("Nombre").Value
+        </a>
+
+    </li>
+    <li>
+        <a asp-controller="Managed" asp-action="Logout">
+            Cerrar Sesion
+        </a>
+    </li>
+}

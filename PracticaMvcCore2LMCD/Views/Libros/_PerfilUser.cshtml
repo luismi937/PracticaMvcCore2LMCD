@@ -1,0 +1,16 @@
+﻿@using System.Security.Claims
+
+<div>
+    <div>
+        <img src="~/images/@Context.User.FindFirst("FOTO").Value"/>
+
+    </div>
+    <div>
+        <h3>IdUsuario: @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</h3>
+        <h3>Nombre:@Context.User.FindFirst("Nombre")?.Value </h3>
+        <h3>
+            APellidos: @Context.User.FindFirst("APellidos").Value
+        </h3>
+        <h3>Email: @Context.User.FindFirst("EMail")?.Value</h3>
+    </div>
+</div>
