@@ -50,6 +50,10 @@ namespace PracticaMvcCore2LMCD.Repositories
                 return await this.context.Pedidos.MaxAsync(p => p.IdFactura) + 1;
             }
         }
+        public async Task<List<Libros>> GetLibrosCarritoAsync(List<int> carrito)
+        {
+            return await this.context.Libros.Where(l => carrito.Contains(l.IdLibro)).ToListAsync();
+        }
         public async Task FinalizarCompraAsync(List<int> carrito, int idUsuario)
         {
             int idCompra = await GetMaxIdCompraAsync();
@@ -73,6 +77,10 @@ namespace PracticaMvcCore2LMCD.Repositories
             }
 
 
+        }
+        public async Task<List<VistaPedidos>> GetPedidosUserAsync(int idUsuario)
+        {
+            return await this.context.VistaPedidos.Where(p => p.IdUsuario == idUsuario).ToListAsync();
         }
         public async Task<Usuarios> FindUsuarioAsync(int idusuaio)
         {
